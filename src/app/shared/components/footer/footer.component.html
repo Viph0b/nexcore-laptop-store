@@ -1,0 +1,64 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a routerLink="/" class="footer__logo">Nexcore</a>
+        <p class="footer__tagline">Power Redefined.</p>
+        <p class="footer__desc">
+          Premium laptops engineered for creators, developers, and professionals who demand more.
+        </p>
+      </div>
+
+      <div class="footer__column">
+        <h4 class="footer__heading">Products</h4>
+        <ul class="footer__links">
+          @for (link of productLinks; track link.path) {
+            <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <div class="footer__column">
+        <h4 class="footer__heading">Company</h4>
+        <ul class="footer__links">
+          @for (link of companyLinks; track link.path) {
+            <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <div class="footer__column">
+        <h4 class="footer__heading">Newsletter</h4>
+        <p class="footer__newsletter-text">Stay updated on new releases and offers.</p>
+        <form class="footer__form" (ngSubmit)="onSubscribe()">
+          <input
+            type="email"
+            [formControl]="emailControl"
+            placeholder="your@email.com"
+            class="footer__input"
+            required
+          />
+          <button type="submit" class="btn btn--primary btn--sm">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; {{ currentYear }} Nexcore. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="#" aria-label="GitHub" class="footer__social-link">
+          <app-icon name="github" [size]="18" />
+        </a>
+        <a href="#" aria-label="Twitter" class="footer__social-link">
+          <app-icon name="twitter" [size]="18" />
+        </a>
+        <a href="#" aria-label="LinkedIn" class="footer__social-link">
+          <app-icon name="linkedin" [size]="18" />
+        </a>
+        <a href="#" aria-label="Email" class="footer__social-link">
+          <app-icon name="mail" [size]="18" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

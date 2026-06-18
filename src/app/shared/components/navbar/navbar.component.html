@@ -1,0 +1,46 @@
+<header class="navbar" [class.navbar--scrolled]="true">
+  <div class="navbar__inner container">
+    <a routerLink="/" class="navbar__logo" (click)="closeMobile()">Nexcore</a>
+
+    <nav class="navbar__nav" [class.navbar__nav--open]="mobileOpen()">
+      @for (link of navLinks; track link.path) {
+        <a
+          routerLink="{{ link.path }}"
+          routerLinkActive="navbar__link--active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="navbar__link"
+          (click)="closeMobile()"
+        >
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+
+    <div class="navbar__actions">
+      <button class="navbar__icon-btn" aria-label="Search" (click)="toggleSearch()">
+        <app-icon name="search" [size]="20" />
+      </button>
+
+      @if (searchOpen()) {
+        <div class="navbar__search">
+          <input type="search" placeholder="Search products..." class="navbar__search-input" autofocus />
+        </div>
+      }
+
+      <a routerLink="/products" class="navbar__icon-btn navbar__cart" aria-label="Cart">
+        <app-icon name="shopping-cart" [size]="20" />
+        @if (cartCount$ | async; as count) {
+          @if (count > 0) {
+            <span class="navbar__cart-badge">{{ count }}</span>
+          }
+        }
+      </a>
+
+      <a routerLink="/products" class="btn btn--primary btn--sm navbar__cta">Get Started</a>
+
+      <button class="navbar__icon-btn navbar__menu-btn" aria-label="Menu" (click)="toggleMobile()">
+        <app-icon [name]="mobileOpen() ? 'x' : 'menu'" [size]="22" />
+      </button>
+    </div>
+  </div>
+</header>

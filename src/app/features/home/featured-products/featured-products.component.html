@@ -1,0 +1,13 @@
+<section class="section featured">
+  <div class="container">
+    <p class="section-label">Featured</p>
+    <h2 class="section-title">Top Picks</h2>
+    <div class="featured__grid">
+      @if (products$ | async; as products) {
+        @for (product of products; track product.id) {
+          <app-product-card [product]="product" />
+        }
+      }
+    </div>
+  </div>
+</section>

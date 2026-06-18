@@ -1,0 +1,56 @@
+<section class="page contact">
+  <div class="container">
+    <div class="contact__layout">
+      <div class="contact__info">
+        <p class="section-label">Get in Touch</p>
+        <h1 class="page__title">Contact Us</h1>
+        <p class="contact__desc">
+          Have a question about our products, need support, or want to partner with Nexcore?
+          We'd love to hear from you.
+        </p>
+        <div class="contact__details">
+          <div>
+            <span class="contact__detail-label">Email</span>
+            <a href="mailto:hello@nexcore.com">hello@nexcore.com</a>
+          </div>
+          <div>
+            <span class="contact__detail-label">Support</span>
+            <a href="mailto:support@nexcore.com">support@nexcore.com</a>
+          </div>
+          <div>
+            <span class="contact__detail-label">Hours</span>
+            <span>Mon–Fri, 9am–6pm EST</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        @if (submitted.value) {
+          <div class="contact__success">Thank you! We'll get back to you soon.</div>
+        }
+
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input id="name" type="text" formControlName="name" class="form-input" />
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input id="email" type="email" formControlName="email" class="form-input" />
+        </div>
+
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" formControlName="subject" class="form-input" />
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" formControlName="message" rows="5" class="form-input"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>

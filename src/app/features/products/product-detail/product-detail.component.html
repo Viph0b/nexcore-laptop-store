@@ -1,0 +1,154 @@
+@if (product$ | async; as product) {
+  @if (product) {
+    <div class="detail-page">
+      <div class="container">
+        <nav class="detail-page__breadcrumb">
+          <a routerLink="/products">Products</a>
+          <app-icon name="chevron-right" [size]="14" />
+          <span>{{ product.name }}</span>
+        </nav>
+
+        <div class="detail-page__hero">
+          <div class="detail-page__gallery">
+            <div class="detail-page__main-image">
+              <img [src]="product.images[selectedImage()]" [alt]="product.name" />
+            </div>
+            @if (product.images.length > 1) {
+              <div class="detail-page__thumbs">
+                @for (img of product.images; track img; let i = $index) {
+                  <button
+                    type="button"
+                    class="detail-page__thumb"
+                    [class.detail-page__thumb--active]="selectedImage() === i"
+                    (click)="selectImage(i)"
+                  >
+                    <img [src]="img" [alt]="product.name + ' view ' + (i + 1)" />
+                  </button>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="detail-page__info">
+            <p class="section-label">{{ product.category | uppercase }}</p>
+            <h1 class="detail-page__name">{{ product.name }}</h1>
+            <p class="detail-page__tagline">{{ product.tagline }}</p>
+
+            <div class="detail-page__rating">
+              @for (star of [1, 2, 3, 4, 5]; track star) {
+                <app-icon
+                  name="star"
+                  [size]="16"
+                  [class.detail-page__star--filled]="star <= product.rating"
+                />
+              }
+              <span>{{ product.rating }} ({{ product.reviewCount }} reviews)</span>
+            </div>
+
+            <p class="detail-page__price">{{ product.price | currency: 'USD' : 'symbol' : '1.0-0' }}</p>
+
+            <div class="detail-page__specs-summary">
+              <span>{{ product.specs.cpu }}</span>
+              <span>{{ product.specs.ram }}</span>
+              <span>{{ product.specs.storage }}</span>
+              <span>{{ product.specs.display }}</span>
+            </div>
+
+            <div class="detail-page__actions">
+              <button type="button" class="btn btn--primary btn--full" (click)="addToCart(product)">
+                {{ addedToCart() ? 'Added to Cart ✓' : 'Add to Cart' }}
+              </button>
+              <button
+                type="button"
+                class="btn btn--ghost btn--full"
+                [class.btn--accent]="isInCompare(product.id)"
+                (click)="toggleCompare(product)"
+              >
+                {{ isInCompare(product.id) ? 'In Compare ✓' : 'Compare' }}
+              </button>
+            </div>
+
+            @if (compareMessage()) {
+              <p class="detail-page__toast">{{ compareMessage() }}</p>
+            }
+          </div>
+        </div>
+
+        <div class="detail-page__tabs">
+          <div class="detail-page__tab-nav">
+            <button
+              type="button"
+              [class.detail-page__tab--active]="activeTab() === 'overview'"
+              (click)="setTab('overview')"
+            >
+              Overview
+            </button>
+            <button
+              type="button"
+              [class.detail-page__tab--active]="activeTab() === 'specifications'"
+              (click)="setTab('specifications')"
+            >
+              Specifications
+            </button>
+            <button
+              type="button"
+              [class.detail-page__tab--active]="activeTab() === 'reviews'"
+              (click)="setTab('reviews')"
+            >
+              Reviews
+            </button>
+          </div>
+
+          <div class="detail-page__tab-content">
+            @switch (activeTab()) {
+              @case ('overview') {
+                <p class="detail-page__overview">{{ product.overview }}</p>
+              }
+              @case ('specifications') {
+                <table class="detail-page__spec-table">
+                  @for (spec of getSpecEntries(product); track spec.key) {
+                    <tr>
+                      <th>{{ spec.key }}</th>
+                      <td>{{ spec.value }}</td>
+                    </tr>
+                  }
+                </table>
+              }
+              @case ('reviews') {
+                @if (product.reviews.length) {
+                  <div class="detail-page__reviews">
+                    @for (review of product.reviews; track review.id) {
+                      <article class="review">
+                        <div class="review__header">
+                          <span class="review__author">{{ review.author }}</span>
+                          <span class="review__date">{{ review.date | date: 'mediumDate' }}</span>
+                        </div>
+                        <div class="review__stars">
+                          @for (star of [1, 2, 3, 4, 5]; track star) {
+                            <app-icon
+                              name="star"
+                              [size]="14"
+                              [class.detail-page__star--filled]="star <= review.rating"
+                            />
+                          }
+                        </div>
+                        <p class="review__comment">{{ review.comment }}</p>
+                      </article>
+                    }
+                  </div>
+                } @else {
+                  <p class="detail-page__no-reviews">No reviews yet.</p>
+                }
+              }
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="container detail-page__not-found">
+      <h1>Product not found</h1>
+      <a routerLink="/products" class="btn btn--primary">Back to Products</a>
+    </div>
+  }
+}

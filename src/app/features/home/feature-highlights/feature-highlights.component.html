@@ -1,0 +1,17 @@
+<section class="section highlights">
+  <div class="container">
+    <p class="section-label">Why Nexcore</p>
+    <h2 class="section-title">Built Different</h2>
+    <div class="highlights__grid">
+      @for (feature of features; track feature.title) {
+        <div class="highlights__item">
+          <div class="highlights__icon">
+            <app-icon [name]="feature.icon" [size]="24" />
+          </div>
+          <h3 class="highlights__title">{{ feature.title }}</h3>
+          <p class="highlights__desc">{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
