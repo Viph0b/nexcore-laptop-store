@@ -43,7 +43,7 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    id: 'nexcore-pro-14',
+    id: 'rog-flow-x13',
     name: 'ROG Flow X13',
     slug: 'rog-flow-x13',
     tagline: 'Balanced power for everyday creators',
@@ -84,7 +84,7 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    id: 'nexcore-ultra-16',
+    id: 'rog-flow-x16',
     name: 'ROG Flow X16',
     slug: 'rog-flow-x16',
     tagline: 'Maximum performance, zero limits',
@@ -118,7 +118,7 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    id: 'nexcore-slim-13',
+    id: 'rog-flow-z13s',
     name: 'ROG Flow Z13',
     slug: 'rog-flow-z13',
     tagline: 'Ultra-portable, always ready',
