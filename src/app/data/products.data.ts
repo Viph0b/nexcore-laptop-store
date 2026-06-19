@@ -118,7 +118,7 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
-    id: 'rog-flow-z13s',
+    id: 'rog-flow-z13',
     name: 'ROG Flow Z13',
     slug: 'rog-flow-z13',
     tagline: 'Ultra-portable, always ready',
