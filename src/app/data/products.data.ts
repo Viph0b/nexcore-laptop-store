@@ -598,6 +598,41 @@ export const PRODUCTS: Product[] = [
     ],
   },
   {
+    id: 'macbook-air-13-inch',
+    name: 'MacBook Air 13-inch',
+    slug: 'macbook-air-13-inch',
+    tagline: 'Thin, light, and ready for every day',
+    price: 999,
+    category: 'slim',
+    specs: {
+      cpu: 'Apple M2',
+      ram: '8GB Unified Memory',
+      storage: '256GB SSD',
+      display: '13.6" Liquid Retina',
+      gpu: 'Apple 10-core GPU',
+      weight: '1.24 kg',
+      battery: 'Up to 18 hours',
+      os: 'macOS Sonoma',
+    },
+    images: ['/assets/imgs/macbook/MacBook Air 13-inch.webp'],
+    featured: false,
+    rating: 4.7,
+    reviewCount: 52,
+    createdAt: '2026-10-01',
+    overview:
+      'The MacBook Air 13-inch blends incredible performance with a fanless design, making it perfect for students, professionals, and anyone who values portability and battery life.',
+    reviews: [
+      {
+        id: 'r2',
+        author: 'Emily Ford',
+        rating: 5,
+        date: '2026-04-10',
+        comment:
+          'Extremely portable and fast. The battery life is outstanding for my daily workflow.',
+      },
+    ],
+  },
+  {
     id: 'msi-raider-16-max-hx',
     name: 'MSI Raider 16 Max HX',
     slug: 'msi-raider-16-max-hx',
