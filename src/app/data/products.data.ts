@@ -104,9 +104,9 @@ export const PRODUCTS: Product[] = [
     reviews: [
       {
         id: 'r4',
-        author: 'Emma Wilson',
-        rating: 5,
-        date: '2025-09-30',
+        author: 'Chyy',
+        rating: 1,
+        date: '2026-09-30',
         comment: 'So light! Perfect for campus. Battery lasts all day easily.',
       },
     ],
