@@ -1309,7 +1309,7 @@ export const PRODUCTS: Product[] = [
       battery: 'Up to 18 hours',
       os: 'macOS Sequoia',
     },
-    images: ['/assets/imgs/macbook/MacBook Air 13-inch (M5).webp'],
+    images: ['/assets/imgs/macook/MacBook Air 13-inch (M5).webp'],
     featured: true,
     rating: 4.9,
     reviewCount: 127,
