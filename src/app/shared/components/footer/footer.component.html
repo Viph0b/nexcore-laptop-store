@@ -13,7 +13,9 @@
         <h4 class="footer__heading">Products</h4>
         <ul class="footer__links">
           @for (link of productLinks; track link.path) {
-            <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+            <li>
+              <a [routerLink]="link.path">{{ link.label }}</a>
+            </li>
           }
         </ul>
       </div>
@@ -22,7 +24,9 @@
         <h4 class="footer__heading">Company</h4>
         <ul class="footer__links">
           @for (link of companyLinks; track link.path) {
-            <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+            <li>
+              <a [routerLink]="link.path">{{ link.label }}</a>
+            </li>
           }
         </ul>
       </div>
@@ -46,7 +50,12 @@
     <div class="footer__bottom">
       <p class="footer__copy">&copy; {{ currentYear }} Nexcore. All rights reserved.</p>
       <div class="footer__social">
-        <a href="#" aria-label="GitHub" class="footer__social-link">
+        <a
+          href="https://github.com/Viph0b/nexcore-laptop-store"
+          target="_blank"
+          aria-label="GitHub"
+          class="footer__social-link"
+        >
           <app-icon name="github" [size]="18" />
         </a>
         <a href="#" aria-label="Twitter" class="footer__social-link">

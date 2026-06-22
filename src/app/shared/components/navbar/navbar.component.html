@@ -1,6 +1,9 @@
 <header class="navbar" [class.navbar--scrolled]="true">
   <div class="navbar__inner container">
-    <a routerLink="/" class="navbar__logo" (click)="closeMobile()">Nexcore</a>
+    <a routerLink="/" class="navbar__logo" (click)="closeMobile()">
+      <img src="/assets/imgs/favicon.png" alt="" />
+      Nexcore
+    </a>
 
     <nav class="navbar__nav" [class.navbar__nav--open]="mobileOpen()">
       @for (link of navLinks; track link.path) {
@@ -23,7 +26,12 @@
 
       @if (searchOpen()) {
         <div class="navbar__search">
-          <input type="search" placeholder="Search products..." class="navbar__search-input" autofocus />
+          <input
+            type="search"
+            placeholder="Search products..."
+            class="navbar__search-input"
+            autofocus
+          />
         </div>
       }
 
