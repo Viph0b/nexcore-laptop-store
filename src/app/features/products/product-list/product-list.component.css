@@ -221,6 +221,16 @@
     box-shadow 0.25s ease;
 }
 
+.filter-group__price input[type='number']::-webkit-outer-spin-button,
+.filter-group__price input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filter-group__price input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
 .filter-input:focus {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 4px rgba(78, 84, 255, 0.08);
