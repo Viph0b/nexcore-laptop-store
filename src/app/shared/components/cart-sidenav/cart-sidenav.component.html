@@ -1,14 +1,5 @@
-<<<<<<< HEAD
 <div class="cart-sidenav" *ngIf="(sidenav.open$ | async)">
   <div class="cart-backdrop" (click)="close()"></div>
-=======
-<div class="cart-sidenav" [class.open]="(sidenav.open$ | async)">
-  <div class="cart-backdrop" (click)="close()"></div>
-
-  <div class="cart-panel" (click)="$event.stopPropagation()">
-    <button class="cart-close" aria-label="Close cart" (click)="close()">×</button>
-    <h3>Your Cart</h3>
->>>>>>> 364471228e7d94f04f51e6ecd3e28db506836c06
 
   <aside class="cart-panel" role="dialog" aria-label="Shopping cart" (click)="$event.stopPropagation()">
     <!-- Header -->
@@ -57,7 +48,6 @@
         <span>Add a product to get started.</span>
       </div>
     </div>
-<<<<<<< HEAD
 
     <!-- Footer -->
     <footer class="cart-footer" *ngIf="(items$ | async)?.length">
@@ -69,7 +59,4 @@
       <button class="btn btn--ghost btn--full" (click)="close()">Continue shopping</button>
     </footer>
   </aside>
-=======
-  </div>
->>>>>>> 364471228e7d94f04f51e6ecd3e28db506836c06
 </div>
