@@ -1,4 +1,6 @@
-<div class="cart-sidenav" *ngIf="(sidenav.open$ | async)">
+<div class="cart-sidenav" [class.open]="(sidenav.open$ | async)">
+  <div class="cart-backdrop" (click)="close()"></div>
+
   <div class="cart-panel" (click)="$event.stopPropagation()">
     <button class="cart-close" aria-label="Close cart" (click)="close()">×</button>
     <h3>Your Cart</h3>
@@ -27,6 +29,4 @@
       </div>
     </div>
   </div>
-
-  <div class="cart-backdrop" (click)="close()"></div>
 </div>
