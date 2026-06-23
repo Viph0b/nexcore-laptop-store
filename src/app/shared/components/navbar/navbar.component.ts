@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { CartService } from '../../../services/cart.service';
+import { SidenavService } from '../../../services/sidenav.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,7 @@ import { CartService } from '../../../services/cart.service';
 })
 export class NavbarComponent {
   private readonly cartService = inject(CartService);
+  private readonly sidenav = inject(SidenavService);
 
   readonly cartCount$ = this.cartService.count$;
   readonly mobileOpen = signal(false);
@@ -36,5 +38,9 @@ export class NavbarComponent {
 
   toggleSearch(): void {
     this.searchOpen.update((v) => !v);
+  }
+
+  openCart(): void {
+    this.sidenav.open();
   }
 }

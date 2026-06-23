@@ -1,0 +1,32 @@
+<div class="cart-sidenav" *ngIf="(sidenav.open$ | async)">
+  <div class="cart-panel" (click)="$event.stopPropagation()">
+    <button class="cart-close" aria-label="Close cart" (click)="close()">×</button>
+    <h3>Your Cart</h3>
+
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let item of (items$ | async)">
+        <div class="cart-item__meta">
+          <div class="cart-item__title">{{ item.product.name }}</div>
+          <div class="cart-item__price">{{ item.product.price | currency }}</div>
+        </div>
+
+        <div class="cart-item__controls">
+          <input type="number" min="1" [value]="item.quantity" (change)="updateQuantity(item.product.id, $any($event.target).value)" />
+          <button class="btn" (click)="remove(item.product.id)">Remove</button>
+        </div>
+      </div>
+
+      <div *ngIf="(items$ | async)?.length === 0" class="cart-empty">Your cart is empty.</div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">Total: {{ total$ | async | currency }}</div>
+      <div class="cart-actions">
+        <button class="btn btn--primary">Checkout</button>
+        <button class="btn" (click)="close()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-backdrop" (click)="close()"></div>
+</div>
