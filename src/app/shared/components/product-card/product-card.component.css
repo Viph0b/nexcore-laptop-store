@@ -64,6 +64,29 @@
   color: var(--color-muted);
   line-height: 1.5;
   flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-card__specs--expanded {
+  white-space: normal;
+  overflow: visible;
+}
+
+.product-card__spec-toggle {
+  font-size: 12px;
+  color: var(--color-primary);
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.product-card__spec-toggle:hover {
+  opacity: 0.8;
 }
 
 .product-card__footer {

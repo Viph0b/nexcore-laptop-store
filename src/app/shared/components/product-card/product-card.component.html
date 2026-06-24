@@ -6,9 +6,23 @@
     <h3 class="product-card__name">
       <a [routerLink]="['/products', product().id]">{{ product().name }}</a>
     </h3>
-    <p class="product-card__specs">
-      {{ product().specs.cpu }} · {{ product().specs.ram }} · {{ product().specs.display }}
-    </p>
+    <div class="product-card__spec-row">
+      <p
+        #specsText
+        class="product-card__specs"
+        [class.product-card__specs--expanded]="showFullSpecs"
+      >
+        {{ product().specs.cpu }} · {{ product().specs.ram }} · {{ product().specs.display }}
+      </p>
+      <button
+        *ngIf="specsOverflow"
+        type="button"
+        class="product-card__spec-toggle"
+        (click)="toggleSpecs()"
+      >
+        {{ showFullSpecs ? 'Show less' : 'Read more' }}
+      </button>
+    </div>
     <div class="product-card__footer">
       <span class="product-card__price">{{ product().price | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
       <a [routerLink]="['/products', product().id]" class="btn btn--ghost btn--sm">View Details</a>
