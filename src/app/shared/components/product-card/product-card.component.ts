@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild, PLATFORM_ID, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CurrencyPipe, NgIf } from '@angular/common';
+import { CurrencyPipe, NgIf, isPlatformBrowser } from '@angular/common';
 import { Product } from '../../../models/product.model';
 
 @Component({
@@ -12,15 +12,17 @@ import { Product } from '../../../models/product.model';
 })
 export class ProductCardComponent implements AfterViewInit {
   readonly product = input.required<Product>();
+  private readonly platformId = inject(PLATFORM_ID);
 
   @ViewChild('specsText') specsText?: ElementRef<HTMLParagraphElement>;
   specsOverflow = false;
   showFullSpecs = false;
 
   ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
     const el = this.specsText?.nativeElement;
     if (el) {
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         this.specsOverflow = el.scrollWidth > el.clientWidth;
       });
     }
