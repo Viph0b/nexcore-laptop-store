@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductCardComponent } from '../../../shared/components/product-card/product-card.component';
 import { ProductService } from '../../../services/product.service';
 import { Product, ProductFilters, SortOption } from '../../../models/product.model';
@@ -16,6 +16,7 @@ import { combineLatest, map, Observable, startWith, switchMap } from 'rxjs';
 })
 export class ProductListComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
+  private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly productService = inject(ProductService);
 
@@ -89,6 +90,7 @@ export class ProductListComponent implements OnInit {
       storage: { '256GB': false, '512GB': false, '1TB': false, '2TB': false },
       sort: 'newest',
     });
+    this.router.navigate(['/products'], { queryParams: {} });
   }
 
   private buildFilters(formValue: Record<string, unknown>, query: string): ProductFilters {

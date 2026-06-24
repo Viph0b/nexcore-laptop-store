@@ -32,9 +32,20 @@
             placeholder="Search products..."
             class="navbar__search-input"
             autofocus
+            (input)="onSearchInput(searchInput.value)"
             (keydown.enter)="search(searchInput.value)"
-            (blur)="searchOpen.set(false)"
+            (blur)="onBlur()"
           />
+          @if (suggestions().length) {
+            <ul class="navbar__suggestions">
+              @for (s of suggestions(); track s.name) {
+                <li class="navbar__suggestion" (mousedown)="selectSuggestion(s.name)">
+                  <span class="navbar__suggestion-name">{{ s.name }}</span>
+                  <span class="navbar__suggestion-price">${{ s.price.toLocaleString() }}</span>
+                </li>
+              }
+            </ul>
+          }
         </div>
       }
 
