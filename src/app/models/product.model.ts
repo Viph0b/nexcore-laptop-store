@@ -42,6 +42,7 @@ export interface CartItem {
 export type SortOption = 'price-asc' | 'price-desc' | 'newest' | 'rating';
 
 export interface ProductFilters {
+  query: string;
   categories: string[];
   minPrice: number | null;
   maxPrice: number | null;

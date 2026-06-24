@@ -24,6 +24,21 @@ export class ProductService {
       map((products) => {
         let result = [...products];
 
+        if (filters.query) {
+          const q = filters.query.toLowerCase();
+          result = result.filter(
+            (p) =>
+              p.name.toLowerCase().includes(q) ||
+              p.tagline.toLowerCase().includes(q) ||
+              p.overview.toLowerCase().includes(q) ||
+              p.category.toLowerCase().includes(q) ||
+              p.specs.cpu.toLowerCase().includes(q) ||
+              p.specs.ram.toLowerCase().includes(q) ||
+              p.specs.storage.toLowerCase().includes(q) ||
+              (p.specs.gpu && p.specs.gpu.toLowerCase().includes(q)),
+          );
+        }
+
         if (filters.categories.length) {
           result = result.filter((p) => filters.categories.includes(p.category));
         }

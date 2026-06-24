@@ -2,7 +2,13 @@
   <div class="container">
     <header class="products-page__header">
       <p class="section-label">Catalog</p>
-      <h1 class="products-page__title">All Products</h1>
+      <h1 class="products-page__title">
+        @if (searchQuery) {
+          Results for "{{ searchQuery }}"
+        } @else {
+          All Products
+        }
+      </h1>
     </header>
 
     <div class="products-page__layout" [formGroup]="filterForm">

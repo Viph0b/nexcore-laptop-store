@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { CartService } from '../../../services/cart.service';
@@ -13,6 +13,7 @@ import { SidenavService } from '../../../services/sidenav.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
+  private readonly router = inject(Router);
   private readonly cartService = inject(CartService);
   private readonly sidenav = inject(SidenavService);
 
@@ -38,6 +39,14 @@ export class NavbarComponent {
 
   toggleSearch(): void {
     this.searchOpen.update((v) => !v);
+  }
+
+  search(query: string): void {
+    const trimmed = query.trim();
+    if (trimmed) {
+      this.router.navigate(['/products'], { queryParams: { q: trimmed } });
+      this.searchOpen.set(false);
+    }
   }
 
   openCart(): void {

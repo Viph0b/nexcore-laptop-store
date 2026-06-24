@@ -27,10 +27,13 @@
       @if (searchOpen()) {
         <div class="navbar__search">
           <input
+            #searchInput
             type="search"
             placeholder="Search products..."
             class="navbar__search-input"
             autofocus
+            (keydown.enter)="search(searchInput.value)"
+            (blur)="searchOpen.set(false)"
           />
         </div>
       }
