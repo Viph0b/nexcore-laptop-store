@@ -6,6 +6,8 @@
       @if (products$ | async; as products) {
         @for (product of products; track product.id) {
           <app-product-card [product]="product" />
+        } @empty {
+          <p class="featured__empty">No featured products available.</p>
         }
       }
     </div>
