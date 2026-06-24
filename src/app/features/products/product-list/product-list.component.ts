@@ -29,6 +29,13 @@ export class ProductListComponent implements OnInit {
     { value: 'studio', label: 'Studio' },
   ];
 
+  readonly brands = [
+    { value: 'rog', label: 'ASUS ROG' },
+    { value: 'msi', label: 'MSI' },
+    { value: 'dell', label: 'Dell' },
+    { value: 'macbook', label: 'MacBook' },
+  ];
+
   readonly ramOptions = ['8GB', '16GB', '32GB', '64GB'];
   readonly storageOptions = ['256GB', '512GB', '1TB', '2TB'];
 
@@ -49,6 +56,12 @@ export class ProductListComponent implements OnInit {
         ultra: [false],
         slim: [false],
         studio: [false],
+      }),
+      brands: this.fb.group({
+        rog: [false],
+        msi: [false],
+        dell: [false],
+        macbook: [false],
       }),
       minPrice: [null as number | null],
       maxPrice: [null as number | null],
@@ -84,6 +97,7 @@ export class ProductListComponent implements OnInit {
   resetFilters(): void {
     this.filterForm.reset({
       categories: { pro: false, ultra: false, slim: false, studio: false },
+      brands: { rog: false, msi: false, dell: false, macbook: false },
       minPrice: null,
       maxPrice: null,
       ram: { '8GB': false, '16GB': false, '32GB': false, '64GB': false },
@@ -97,6 +111,9 @@ export class ProductListComponent implements OnInit {
     return {
       query,
       categories: Object.entries(formValue['categories'] as Record<string, boolean>)
+        .filter(([, checked]) => checked)
+        .map(([key]) => key),
+      brands: Object.entries(formValue['brands'] as Record<string, boolean>)
         .filter(([, checked]) => checked)
         .map(([key]) => key),
       minPrice: (formValue['minPrice'] as number | null) ?? null,

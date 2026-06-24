@@ -32,6 +32,7 @@ export class ProductService {
               p.tagline.toLowerCase().includes(q) ||
               p.overview.toLowerCase().includes(q) ||
               p.category.toLowerCase().includes(q) ||
+              p.brand.toLowerCase().includes(q) ||
               p.specs.cpu.toLowerCase().includes(q) ||
               p.specs.ram.toLowerCase().includes(q) ||
               p.specs.storage.toLowerCase().includes(q) ||
@@ -41,6 +42,10 @@ export class ProductService {
 
         if (filters.categories.length) {
           result = result.filter((p) => filters.categories.includes(p.category));
+        }
+
+        if (filters.brands.length) {
+          result = result.filter((p) => filters.brands.includes(p.brand));
         }
 
         if (filters.minPrice !== null) {

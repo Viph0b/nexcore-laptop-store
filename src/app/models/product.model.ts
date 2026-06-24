@@ -24,6 +24,7 @@ export interface Product {
   tagline: string;
   price: number;
   category: 'pro' | 'ultra' | 'slim' | 'studio';
+  brand: 'msi' | 'rog' | 'macbook' | 'dell';
   specs: ProductSpecs;
   images: string[];
   featured: boolean;
@@ -44,6 +45,7 @@ export type SortOption = 'price-asc' | 'price-desc' | 'newest' | 'rating';
 export interface ProductFilters {
   query: string;
   categories: string[];
+  brands: string[];
   minPrice: number | null;
   maxPrice: number | null;
   ram: string[];

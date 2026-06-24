@@ -9,6 +9,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Balanced power for everyday creators',
     price: 1199,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i7-13700H',
       ram: '16GB DDR5',
@@ -50,6 +51,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Maximum performance, zero limits',
     price: 1799,
     category: 'ultra',
+    brand: 'rog',
     specs: {
       cpu: 'AMD Ryzen 9 7940HS',
       ram: '32GB DDR5',
@@ -84,6 +86,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Ultra-portable, always ready',
     price: 849,
     category: 'slim',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i5-1340P',
       ram: '8GB DDR5',
@@ -118,6 +121,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Built for the most demanding workflows',
     price: 2499,
     category: 'studio',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i9-13980HX',
       ram: '64GB DDR5',
@@ -152,6 +156,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Featherlight performance',
     price: 999,
     category: 'slim',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i7-1360P',
       ram: '16GB DDR5',
@@ -178,6 +183,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Compact power for creative pros',
     price: 1249,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i7-13700H',
       ram: '16GB DDR5',
@@ -204,6 +210,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Ultra-portable creator performance',
     price: 1299,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i7-13700H',
       ram: '16GB DDR5',
@@ -230,6 +237,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Portable performance with premium display',
     price: 1199,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i7-13700H',
       ram: '16GB DDR5',
@@ -256,6 +264,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Immersive power for creators',
     price: 1849,
     category: 'ultra',
+    brand: 'rog',
     specs: {
       cpu: 'AMD Ryzen 9 7940HS',
       ram: '32GB DDR5',
@@ -282,6 +291,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Creative performance, big display',
     price: 1799,
     category: 'ultra',
+    brand: 'rog',
     specs: {
       cpu: 'AMD Ryzen 9 7940HS',
       ram: '32GB DDR5',
@@ -308,6 +318,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Tablet-style power for on-the-go work',
     price: 899,
     category: 'slim',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i5-1340P',
       ram: '8GB DDR5',
@@ -334,6 +345,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Versatile performance in a compact frame',
     price: 929,
     category: 'slim',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i5-1340P',
       ram: '8GB DDR5',
@@ -360,6 +372,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'High-end gaming and creative performance',
     price: 2399,
     category: 'studio',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i9-13980HX',
       ram: '64GB DDR5',
@@ -386,6 +399,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Premium performance with striking visuals',
     price: 2429,
     category: 'studio',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i9-13980HX',
       ram: '64GB DDR5',
@@ -412,6 +426,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Extreme power for competitive play',
     price: 1999,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i9-13950HX',
       ram: '32GB DDR5',
@@ -438,6 +453,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Big-screen speed and precision',
     price: 1949,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i9-13950HX',
       ram: '32GB DDR5',
@@ -464,6 +480,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Large-display power for serious gaming',
     price: 1979,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i9-13950HX',
       ram: '32GB DDR5',
@@ -490,6 +507,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'High-performance laptop for competitive creators',
     price: 2029,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i9-13950HX',
       ram: '32GB DDR5',
@@ -516,6 +534,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Top-tier graphics in an 18-inch chassis',
     price: 2059,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i9-13950HX',
       ram: '32GB DDR5',
@@ -542,6 +561,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Extreme performance for gaming and creation',
     price: 2089,
     category: 'pro',
+    brand: 'rog',
     specs: {
       cpu: 'Intel Core i9-13950HX',
       ram: '32GB DDR5',
@@ -570,6 +590,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Desktop-class computing without compromise',
     price: 4999,
     category: 'ultra',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra 9 290HX',
       ram: '64GB DDR5',
@@ -604,6 +625,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Thin, light, and ready for every day',
     price: 999,
     category: 'slim',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M2',
       ram: '8GB Unified Memory',
@@ -639,6 +661,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Extreme performance with ultimate total power',
     price: 2899,
     category: 'ultra',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra 9 275HX',
       ram: '32GB DDR5',
@@ -673,6 +696,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Thin, light, and effortlessly powerful',
     price: 2399,
     category: 'slim',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra Series 3',
       ram: '32GB LPDDR5X',
@@ -708,6 +732,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Performance beyond its class with a futuristic edge',
     price: 1799,
     category: 'ultra',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra 9 290HX Plus',
       ram: '16GB DDR5',
@@ -742,6 +767,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Everyday gaming with bold cybernetic style',
     price: 1099,
     category: 'slim',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core 7 processor 240H',
       ram: '16GB DDR5',
@@ -776,6 +802,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Ultra-compact AI powerhouse for professionals',
     price: 1299,
     category: 'pro',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra Series 3',
       ram: '16GB LPDDR5X',
@@ -810,6 +837,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Next-gen mobility and elite multi-day productivity',
     price: 1599,
     category: 'pro',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra Series 3',
       ram: '32GB LPDDR5X',
@@ -845,6 +873,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Sharpen your game with exceptional mainstream value',
     price: 1399,
     category: 'ultra',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core i7-14650HX',
       ram: '16GB DDR5',
@@ -879,6 +908,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Sleek aluminum mobility for daily multi-taskers',
     price: 899,
     category: 'slim',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra Series 2',
       ram: '16GB DDR5',
@@ -913,6 +943,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Uncompromising AMD-powered desktop replacement',
     price: 3299,
     category: 'ultra',
+    brand: 'msi',
     specs: {
       cpu: 'AMD Ryzen 9000 Series',
       ram: '32GB DDR5',
@@ -947,6 +978,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Slim professional elegance on an expansive scale',
     price: 3499,
     category: 'slim',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra 9 290HX Plus',
       ram: '64GB DDR5',
@@ -981,6 +1013,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Born for pure processing and engineering calculation',
     price: 2199,
     category: 'studio',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core i9-14900HX',
       ram: '32GB DDR5',
@@ -1015,6 +1048,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Elite 360-degree versatility for business leaders',
     price: 1899,
     category: 'studio',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra 7 155H',
       ram: '32GB LPDDR5',
@@ -1050,6 +1084,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Precision-calibrated foundation for studio workflows',
     price: 2999,
     category: 'studio',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core i9-14900HX',
       ram: '64GB DDR5',
@@ -1085,6 +1120,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Sharpen your tactics with optimized processing',
     price: 1249,
     category: 'ultra',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core i7-14700HX',
       ram: '16GB DDR5',
@@ -1119,6 +1155,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Futuristic sci-fi design meeting high-speed cores',
     price: 1549,
     category: 'ultra',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra 7 155H',
       ram: '16GB DDR5',
@@ -1153,6 +1190,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Accessible gaming powered by the latest AMD silicon',
     price: 1149,
     category: 'slim',
+    brand: 'msi',
     specs: {
       cpu: 'AMD Ryzen 100 Series',
       ram: '16GB DDR5',
@@ -1187,6 +1225,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Ultra-portable gateway to casual entry gaming',
     price: 799,
     category: 'slim',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core i5-13420H',
       ram: '8GB DDR4',
@@ -1222,6 +1261,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Your stylish companion for everyday productivity',
     price: 649,
     category: 'pro',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core i5-1335U',
       ram: '16GB DDR4',
@@ -1256,6 +1296,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Ultra-portable 13-inch companion for active executives',
     price: 1499,
     category: 'pro',
+    brand: 'msi',
     specs: {
       cpu: 'Intel Core Ultra 7 155H',
       ram: '16GB LPDDR5',
@@ -1293,6 +1334,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Flagship ultraportable with premium performance',
     price: 1499,
     category: 'slim',
+    brand: 'dell',
     specs: {
       cpu: 'Intel Core i7-1360P',
       ram: '16GB LPDDR5',
@@ -1319,6 +1361,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Always-connected productivity in a featherlight package',
     price: 1399,
     category: 'slim',
+    brand: 'dell',
     specs: {
       cpu: 'Qualcomm Snapdragon X Elite',
       ram: '16GB LPDDR5X',
@@ -1345,6 +1388,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Big-screen productivity with sleek XPS design',
     price: 1599,
     category: 'studio',
+    brand: 'dell',
     specs: {
       cpu: 'Intel Core i7-13720H',
       ram: '16GB DDR5',
@@ -1371,6 +1415,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Large-format performance for creators and pros',
     price: 2099,
     category: 'ultra',
+    brand: 'dell',
     specs: {
       cpu: 'Intel Core i9-13900HX',
       ram: '32GB DDR5',
@@ -1397,6 +1442,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Everyday productivity in a compact 14-inch frame',
     price: 999,
     category: 'pro',
+    brand: 'dell',
     specs: {
       cpu: 'Intel Core i5-1340P',
       ram: '16GB LPDDR5',
@@ -1423,6 +1469,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Reliable performance for students and home offices',
     price: 749,
     category: 'slim',
+    brand: 'dell',
     specs: {
       cpu: 'Intel Core i5-1335U',
       ram: '8GB DDR4',
@@ -1449,6 +1496,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Premium business laptop built for productivity',
     price: 1299,
     category: 'pro',
+    brand: 'dell',
     specs: {
       cpu: 'Intel Core i7-1360P',
       ram: '16GB LPDDR5',
@@ -1475,6 +1523,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Essential business performance with trusted durability',
     price: 999,
     category: 'pro',
+    brand: 'dell',
     specs: {
       cpu: 'Intel Core i5-13500H',
       ram: '16GB DDR5',
@@ -1501,6 +1550,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Workstation-grade performance in an 18-inch mobile chassis',
     price: 2699,
     category: 'ultra',
+    brand: 'dell',
     specs: {
       cpu: 'Intel Core i9-13980HX',
       ram: '32GB DDR5',
@@ -1527,6 +1577,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Durable performance for demanding field environments',
     price: 1799,
     category: 'studio',
+    brand: 'dell',
     specs: {
       cpu: 'Intel Core i7-1360P',
       ram: '16GB DDR5',
@@ -1555,6 +1606,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Powerful. Colorful. Impossibly thin.',
     price: 1099,
     category: 'slim',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M4 chip',
       ram: '8GB unified memory',
@@ -1596,6 +1648,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Next-generation performance in a compact form.',
     price: 1199,
     category: 'slim',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M5 chip',
       ram: '8GB unified memory',
@@ -1630,6 +1683,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Spacious. Powerful. Impossibly thin.',
     price: 1299,
     category: 'pro',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M4 chip',
       ram: '8GB unified memory',
@@ -1664,6 +1718,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'More screen. More power. More possibility.',
     price: 1399,
     category: 'pro',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M5 chip',
       ram: '8GB unified memory',
@@ -1698,6 +1753,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'More powerful. More capable. More pro.',
     price: 1999,
     category: 'ultra',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M4 Pro chip',
       ram: '18GB unified memory',
@@ -1732,6 +1788,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Pro performance. Pro features. Pro everything.',
     price: 2099,
     category: 'ultra',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M5 Pro chip',
       ram: '18GB unified memory',
@@ -1766,6 +1823,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Unleash your creativity and power.',
     price: 2499,
     category: 'studio',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M5 Max chip',
       ram: '36GB unified memory',
@@ -1800,6 +1858,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'The ultimate canvas for pro work.',
     price: 2699,
     category: 'studio',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M5 Pro chip',
       ram: '18GB unified memory',
@@ -1834,6 +1893,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'The ultimate in power and performance.',
     price: 3299,
     category: 'studio',
+    brand: 'macbook',
     specs: {
       cpu: 'Apple M5 Max chip',
       ram: '36GB unified memory',
@@ -1862,3 +1922,4 @@ export const PRODUCTS: Product[] = [
     ],
   },
 ];
+
