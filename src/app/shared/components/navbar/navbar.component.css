@@ -236,6 +236,12 @@
   position: relative;
   overflow: hidden;
   opacity: 0;
+  background: linear-gradient(135deg, var(--color-accent) 0%, #7c3aed 100%);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: none;
+  z-index: 1;
   animation: navbar-cta-pulse 2.5s ease-in-out infinite, navbar-fade-down 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
 }
 
@@ -244,19 +250,42 @@
   position: absolute;
   inset: 0;
   border-radius: var(--radius);
-  background: radial-gradient(circle at center, rgba(92, 92, 255, 0.25), transparent 70%);
+  background: linear-gradient(135deg, #7c3aed 0%, var(--color-accent) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
-  pointer-events: none;
+  z-index: -1;
+}
+
+.navbar__cta::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius) + 2px);
+  background: linear-gradient(135deg, var(--color-accent), #a78bfa, var(--color-accent));
+  background-size: 200% 200%;
+  animation: navbar-border-glow 3s ease-in-out infinite;
+  z-index: -2;
+  opacity: 0.4;
+  filter: blur(2px);
+  transition: opacity 0.4s ease;
+}
+
+.navbar__cta:hover {
+  box-shadow: 0 4px 24px rgba(92, 92, 255, 0.35);
+  transform: translateY(-2px);
+  animation-play-state: paused, running;
 }
 
 .navbar__cta:hover::before {
   opacity: 1;
 }
 
-.navbar__cta:hover {
-  box-shadow: 0 0 20px rgba(92, 92, 255, 0.2);
-  animation-play-state: paused, running;
+.navbar__cta:hover::after {
+  opacity: 0.8;
+}
+
+.navbar__cta:active {
+  transform: translateY(0);
 }
 
 .navbar__cart-badge {
@@ -307,6 +336,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes navbar-border-glow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 @media (max-width: 768px) {
