@@ -105,8 +105,8 @@
 }
 
 .detail-page__star--filled {
-  color: var(--color-accent) !important;
-  fill: var(--color-accent);
+    color: #f59e0b !important;
+  fill: #f59e0b;
 }
 
 .detail-page__price {
