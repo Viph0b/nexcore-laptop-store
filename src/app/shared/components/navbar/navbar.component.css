@@ -242,12 +242,96 @@
   }
 }
 
+.navbar__cta {
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: navbar-cta-pulse 2.5s ease-in-out infinite, navbar-fade-down 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.navbar__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(circle at center, rgba(92, 92, 255, 0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.navbar__cta:hover::before {
+  opacity: 1;
+}
+
+.navbar__cta:hover {
+  box-shadow: 0 0 20px rgba(92, 92, 255, 0.2);
+  animation-play-state: paused, running;
+}
+
+.navbar__cart-badge {
+  animation: navbar-badge-bounce 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__logo {
+  animation: navbar-fade-down 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.navbar__link {
+  opacity: 0;
+  animation: navbar-fade-down 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.navbar__link:nth-child(1) { animation-delay: 0.05s; }
+.navbar__link:nth-child(2) { animation-delay: 0.1s; }
+.navbar__link:nth-child(3) { animation-delay: 0.15s; }
+.navbar__link:nth-child(4) { animation-delay: 0.2s; }
+
+.navbar__icon-btn {
+  opacity: 0;
+  animation: navbar-fade-down 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
 .navbar__menu-btn {
   display: none;
+}
+
+@keyframes navbar-cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(92, 92, 255, 0); }
+  50% { box-shadow: 0 0 16px rgba(92, 92, 255, 0.15); }
+}
+
+@keyframes navbar-badge-bounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.25); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@keyframes navbar-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
   .navbar__menu-btn {
     display: flex;
+  }
+
+  .navbar__link {
+    opacity: 1;
+    animation: none;
+  }
+
+  .navbar__icon-btn,
+  .navbar__cta {
+    opacity: 1;
+    animation: none;
   }
 }
