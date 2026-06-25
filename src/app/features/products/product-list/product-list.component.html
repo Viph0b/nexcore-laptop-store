@@ -19,62 +19,64 @@
             <button type="button" class="filter-panel__reset" (click)="resetFilters()">Reset</button>
           </div>
 
-          <fieldset class="filter-group">
-            <legend class="filter-group__label">Category</legend>
-            <div formGroupName="categories" class="filter-group__options">
-              @for (cat of categories; track cat.value) {
-                <label class="filter-checkbox">
-                  <input type="checkbox" [formControlName]="cat.value" />
-                  <span>{{ cat.label }}</span>
-                </label>
-              }
-            </div>
-          </fieldset>
+          <div class="filter-panel__body">
+            <fieldset class="filter-group">
+              <legend class="filter-group__label">Category</legend>
+              <div formGroupName="categories" class="filter-chips">
+                @for (cat of categories; track cat.value) {
+                  <label class="filter-chip" [class.filter-chip--checked]="filterForm.get('categories.' + cat.value)?.value">
+                    <input type="checkbox" [formControlName]="cat.value" />
+                    <span>{{ cat.label }}</span>
+                  </label>
+                }
+              </div>
+            </fieldset>
 
-          <fieldset class="filter-group">
-            <legend class="filter-group__label">Brand</legend>
-            <div formGroupName="brands" class="filter-group__options">
-              @for (brand of brands; track brand.value) {
-                <label class="filter-checkbox">
-                  <input type="checkbox" [formControlName]="brand.value" />
-                  <span>{{ brand.label }}</span>
-                </label>
-              }
-            </div>
-          </fieldset>
+            <fieldset class="filter-group">
+              <legend class="filter-group__label">Brand</legend>
+              <div formGroupName="brands" class="filter-chips">
+                @for (brand of brands; track brand.value) {
+                  <label class="filter-chip" [class.filter-chip--checked]="filterForm.get('brands.' + brand.value)?.value">
+                    <input type="checkbox" [formControlName]="brand.value" />
+                    <span>{{ brand.label }}</span>
+                  </label>
+                }
+              </div>
+            </fieldset>
 
-          <fieldset class="filter-group">
-            <legend class="filter-group__label">Price Range</legend>
-            <div class="filter-group__price">
-              <input type="number" formControlName="minPrice" placeholder="Min" class="filter-input" />
-              <span class="filter-group__sep">—</span>
-              <input type="number" formControlName="maxPrice" placeholder="Max" class="filter-input" />
-            </div>
-          </fieldset>
+            <fieldset class="filter-group">
+              <legend class="filter-group__label">Price Range</legend>
+              <div class="filter-group__price">
+                <input type="number" formControlName="minPrice" placeholder="Min" class="filter-input" />
+                <span class="filter-group__sep">—</span>
+                <input type="number" formControlName="maxPrice" placeholder="Max" class="filter-input" />
+              </div>
+            </fieldset>
 
-          <fieldset class="filter-group">
-            <legend class="filter-group__label">RAM</legend>
-            <div formGroupName="ram" class="filter-group__options">
-              @for (ram of ramOptions; track ram) {
-                <label class="filter-checkbox">
-                  <input type="checkbox" [formControlName]="ram" />
-                  <span>{{ ram }}</span>
-                </label>
-              }
-            </div>
-          </fieldset>
+            <fieldset class="filter-group">
+              <legend class="filter-group__label">RAM</legend>
+              <div formGroupName="ram" class="filter-chips">
+                @for (ram of ramOptions; track ram) {
+                  <label class="filter-chip" [class.filter-chip--checked]="filterForm.get('ram.' + ram)?.value">
+                    <input type="checkbox" [formControlName]="ram" />
+                    <span>{{ ram }}</span>
+                  </label>
+                }
+              </div>
+            </fieldset>
 
-          <fieldset class="filter-group">
-            <legend class="filter-group__label">Storage</legend>
-            <div formGroupName="storage" class="filter-group__options">
-              @for (storage of storageOptions; track storage) {
-                <label class="filter-checkbox">
-                  <input type="checkbox" [formControlName]="storage" />
-                  <span>{{ storage }}</span>
-                </label>
-              }
-            </div>
-          </fieldset>
+            <fieldset class="filter-group">
+              <legend class="filter-group__label">Storage</legend>
+              <div formGroupName="storage" class="filter-chips">
+                @for (storage of storageOptions; track storage) {
+                  <label class="filter-chip" [class.filter-chip--checked]="filterForm.get('storage.' + storage)?.value">
+                    <input type="checkbox" [formControlName]="storage" />
+                    <span>{{ storage }}</span>
+                  </label>
+                }
+              </div>
+            </fieldset>
+          </div>
         </div>
       </aside>
 
