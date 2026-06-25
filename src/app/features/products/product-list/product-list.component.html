@@ -15,96 +15,192 @@
       <aside class="products-page__sidebar">
         <div class="filter-panel">
           <div class="filter-panel__header">
-            <h2 class="filter-panel__title">Filters</h2>
-            <button type="button" class="filter-panel__reset" (click)="resetFilters()">Reset</button>
+            <h2 class="filter-panel__title">Filters · {{ activeFilterCount }}</h2>
+            @if (activeFilterCount > 0) {
+              <button type="button" class="filter-panel__reset" (click)="resetFilters()">Reset</button>
+            }
           </div>
 
-          <div class="filter-panel__body">
-            <fieldset class="filter-group">
-              <legend class="filter-group__label">Category</legend>
-              <div formGroupName="categories" class="filter-chips">
-                @for (cat of categories; track cat.value) {
-                  <label class="filter-chip" [class.filter-chip--checked]="filterForm.get('categories.' + cat.value)?.value">
-                    <input type="checkbox" [formControlName]="cat.value" />
-                    <span>{{ cat.label }}</span>
-                  </label>
-                }
+          <div class="filter-section" [class.filter-section--open]="!collapsedSections['category']">
+            <button type="button" class="filter-section__toggle" (click)="toggleSection('category')">
+              <span class="filter-section__label">Category</span>
+              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="filter-section__body">
+              <div class="filter-section__content">
+                <div formGroupName="categories" class="filter-checkboxes">
+                  @for (cat of categories; track cat.value) {
+                    <label class="filter-checkbox">
+                      <input type="checkbox" [formControlName]="cat.value" class="filter-checkbox__input" />
+                      <span class="filter-checkbox__check">
+                        <svg class="filter-checkbox__icon" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                          <path d="M2 5l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span class="filter-checkbox__text">{{ cat.label }}</span>
+                    </label>
+                  }
+                </div>
               </div>
-            </fieldset>
+            </div>
+          </div>
 
-            <fieldset class="filter-group">
-              <legend class="filter-group__label">Brand</legend>
-              <div formGroupName="brands" class="filter-chips">
-                @for (brand of brands; track brand.value) {
-                  <label class="filter-chip" [class.filter-chip--checked]="filterForm.get('brands.' + brand.value)?.value">
-                    <input type="checkbox" [formControlName]="brand.value" />
-                    <span>{{ brand.label }}</span>
-                  </label>
-                }
+          <div class="filter-section" [class.filter-section--open]="!collapsedSections['brand']">
+            <button type="button" class="filter-section__toggle" (click)="toggleSection('brand')">
+              <span class="filter-section__label">Brand</span>
+              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="filter-section__body">
+              <div class="filter-section__content">
+                <div formGroupName="brands" class="filter-checkboxes">
+                  @for (brand of brands; track brand.value) {
+                    <label class="filter-checkbox">
+                      <input type="checkbox" [formControlName]="brand.value" class="filter-checkbox__input" />
+                      <span class="filter-checkbox__check">
+                        <svg class="filter-checkbox__icon" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                          <path d="M2 5l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span class="filter-checkbox__text">{{ brand.label }}</span>
+                    </label>
+                  }
+                </div>
               </div>
-            </fieldset>
+            </div>
+          </div>
 
-            <fieldset class="filter-group">
-              <legend class="filter-group__label">Price Range</legend>
-              <div class="filter-group__price">
-                <input type="number" formControlName="minPrice" placeholder="Min" class="filter-input" />
-                <span class="filter-group__sep">—</span>
-                <input type="number" formControlName="maxPrice" placeholder="Max" class="filter-input" />
+          <div class="filter-section" [class.filter-section--open]="!collapsedSections['price']">
+            <button type="button" class="filter-section__toggle" (click)="toggleSection('price')">
+              <span class="filter-section__label">Price Range</span>
+              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="filter-section__body">
+              <div class="filter-section__content">
+                <div class="price-slider">
+                  <div class="price-slider__track">
+                    <div class="price-slider__fill" [style.left.%]="minPricePercent" [style.width.%]="maxPricePercent - minPricePercent"></div>
+                    <input type="range" class="price-slider__input price-slider__input--min"
+                           [min]="priceMin" [max]="priceMax" [step]="priceStep"
+                           [value]="minPriceVal" (input)="onMinPriceInput($event)" />
+                    <input type="range" class="price-slider__input price-slider__input--max"
+                           [min]="priceMin" [max]="priceMax" [step]="priceStep"
+                           [value]="maxPriceVal" (input)="onMaxPriceInput($event)" />
+                  </div>
+                  <div class="price-slider__range-labels">
+                    <span>$0</span>
+                    <span>$5,000</span>
+                  </div>
+                </div>
               </div>
-            </fieldset>
+            </div>
+          </div>
 
-            <fieldset class="filter-group">
-              <legend class="filter-group__label">RAM</legend>
-              <div formGroupName="ram" class="filter-chips">
-                @for (ram of ramOptions; track ram) {
-                  <label class="filter-chip" [class.filter-chip--checked]="filterForm.get('ram.' + ram)?.value">
-                    <input type="checkbox" [formControlName]="ram" />
-                    <span>{{ ram }}</span>
-                  </label>
-                }
+          <div class="filter-section" [class.filter-section--open]="!collapsedSections['ram']">
+            <button type="button" class="filter-section__toggle" (click)="toggleSection('ram')">
+              <span class="filter-section__label">RAM</span>
+              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="filter-section__body">
+              <div class="filter-section__content">
+                <div formGroupName="ram" class="filter-chips">
+                  @for (ram of ramOptions; track ram) {
+                    <label class="filter-chip" [class.filter-chip--active]="filterForm.get('ram.' + ram)?.value">
+                      <input type="checkbox" [formControlName]="ram" class="filter-chip__input" />
+                      <span class="filter-chip__text">{{ ram }}</span>
+                    </label>
+                  }
+                </div>
               </div>
-            </fieldset>
+            </div>
+          </div>
 
-            <fieldset class="filter-group">
-              <legend class="filter-group__label">Storage</legend>
-              <div formGroupName="storage" class="filter-chips">
-                @for (storage of storageOptions; track storage) {
-                  <label class="filter-chip" [class.filter-chip--checked]="filterForm.get('storage.' + storage)?.value">
-                    <input type="checkbox" [formControlName]="storage" />
-                    <span>{{ storage }}</span>
-                  </label>
-                }
+          <div class="filter-section" [class.filter-section--open]="!collapsedSections['storage']">
+            <button type="button" class="filter-section__toggle" (click)="toggleSection('storage')">
+              <span class="filter-section__label">Storage</span>
+              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="filter-section__body">
+              <div class="filter-section__content">
+                <div formGroupName="storage" class="filter-chips">
+                  @for (storage of storageOptions; track storage) {
+                    <label class="filter-chip" [class.filter-chip--active]="filterForm.get('storage.' + storage)?.value">
+                      <input type="checkbox" [formControlName]="storage" class="filter-chip__input" />
+                      <span class="filter-chip__text">{{ storage }}</span>
+                    </label>
+                  }
+                </div>
               </div>
-            </fieldset>
+            </div>
           </div>
         </div>
       </aside>
 
       <main class="products-page__main">
-        <div class="products-page__toolbar">
-          <p class="products-page__count">
-            @if (products$ | async; as products) {
-              {{ products.length }} product{{ products.length !== 1 ? 's' : '' }}
-            }
-          </p>
-          <select formControlName="sort" class="products-page__sort">
-            @for (opt of sortOptions; track opt.value) {
-              <option [value]="opt.value">{{ opt.label }}</option>
-            }
-          </select>
-        </div>
+        @if (products$ | async; as products) {
+          <div class="products-page__toolbar">
+            <p class="products-page__count">{{ products.length }} product{{ products.length !== 1 ? 's' : '' }}</p>
+            <div class="sort-wrapper">
+              <select formControlName="sort" class="products-page__sort">
+                @for (opt of sortOptions; track opt.value) {
+                  <option [value]="opt.value">{{ opt.label }}</option>
+                }
+              </select>
+              <svg class="sort-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
 
-        <div class="products-page__grid">
-          @if (products$ | async; as products) {
-            @if (products.length) {
+          @if (products.length) {
+            <div class="products-page__grid">
               @for (product of products; track product.id) {
                 <app-product-card [product]="product" />
               }
-            } @else {
-              <p class="products-page__empty">No products match your filters.</p>
-            }
+            </div>
+          } @else {
+            <p class="products-page__empty">No products match your filters.</p>
           }
-        </div>
+        } @else {
+          <div class="products-page__toolbar">
+            <p class="products-page__count">&nbsp;</p>
+            <div class="sort-wrapper">
+              <select formControlName="sort" class="products-page__sort">
+                @for (opt of sortOptions; track opt.value) {
+                  <option [value]="opt.value">{{ opt.label }}</option>
+                }
+              </select>
+              <svg class="sort-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="products-page__grid">
+            @for (n of [1,2,3,4,5,6]; track n) {
+              <div class="skeleton-card">
+                <div class="skeleton-card__img"></div>
+                <div class="skeleton-card__body">
+                  <div class="skeleton-card__line skeleton-card__line--lg"></div>
+                  <div class="skeleton-card__line skeleton-card__line--sm"></div>
+                  <div class="skeleton-card__footer">
+                    <div class="skeleton-card__line skeleton-card__line--md"></div>
+                    <div class="skeleton-card__line skeleton-card__line--btn"></div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        }
       </main>
     </div>
   </div>

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductCardComponent } from '../../../shared/components/product-card/product-card.component';
@@ -49,6 +49,51 @@ export class ProductListComponent implements OnInit {
   filterForm!: FormGroup;
   searchQuery = '';
 
+  collapsedSections: Record<string, boolean> = {
+    category: false,
+    brand: false,
+    price: false,
+    ram: false,
+    storage: false,
+  };
+
+  readonly priceMin = 0;
+  readonly priceMax = 5000;
+  readonly priceStep = 100;
+
+  get activeFilterCount(): number {
+    if (!this.filterForm) return 0;
+    const v = this.filterForm.value;
+    let count = 0;
+    const cats = v.categories as Record<string, boolean>;
+    const brds = v.brands as Record<string, boolean>;
+    const ram = v.ram as Record<string, boolean>;
+    const storage = v.storage as Record<string, boolean>;
+    if (cats) for (const x of Object.values(cats)) if (x) count++;
+    if (brds) for (const x of Object.values(brds)) if (x) count++;
+    if (ram) for (const x of Object.values(ram)) if (x) count++;
+    if (storage) for (const x of Object.values(storage)) if (x) count++;
+    if ((v.minPrice ?? 0) > this.priceMin) count++;
+    if ((v.maxPrice ?? this.priceMax) < this.priceMax) count++;
+    return count;
+  }
+
+  get minPriceVal(): number {
+    return this.filterForm?.get('minPrice')?.value ?? this.priceMin;
+  }
+
+  get maxPriceVal(): number {
+    return this.filterForm?.get('maxPrice')?.value ?? this.priceMax;
+  }
+
+  get minPricePercent(): number {
+    return ((this.minPriceVal - this.priceMin) / (this.priceMax - this.priceMin)) * 100;
+  }
+
+  get maxPricePercent(): number {
+    return ((this.maxPriceVal - this.priceMin) / (this.priceMax - this.priceMin)) * 100;
+  }
+
   ngOnInit(): void {
     this.filterForm = this.fb.group({
       categories: this.fb.group({
@@ -63,8 +108,8 @@ export class ProductListComponent implements OnInit {
         dell: [false],
         macbook: [false],
       }),
-      minPrice: [null as number | null],
-      maxPrice: [null as number | null],
+      minPrice: [this.priceMin],
+      maxPrice: [this.priceMax],
       ram: this.fb.group({
         '8GB': [false],
         '16GB': [false],
@@ -94,12 +139,32 @@ export class ProductListComponent implements OnInit {
     );
   }
 
+  toggleSection(section: string): void {
+    this.collapsedSections[section] = !this.collapsedSections[section];
+  }
+
+  onMinPriceInput(event: Event): void {
+    const val = parseInt((event.target as HTMLInputElement).value, 10);
+    const max = this.filterForm.get('maxPrice')?.value ?? this.priceMax;
+    if (val < max) {
+      this.filterForm.patchValue({ minPrice: val });
+    }
+  }
+
+  onMaxPriceInput(event: Event): void {
+    const val = parseInt((event.target as HTMLInputElement).value, 10);
+    const min = this.filterForm.get('minPrice')?.value ?? this.priceMin;
+    if (val > min) {
+      this.filterForm.patchValue({ maxPrice: val });
+    }
+  }
+
   resetFilters(): void {
     this.filterForm.reset({
       categories: { pro: false, ultra: false, slim: false, studio: false },
       brands: { rog: false, msi: false, dell: false, macbook: false },
-      minPrice: null,
-      maxPrice: null,
+      minPrice: this.priceMin,
+      maxPrice: this.priceMax,
       ram: { '8GB': false, '16GB': false, '32GB': false, '64GB': false },
       storage: { '256GB': false, '512GB': false, '1TB': false, '2TB': false },
       sort: 'newest',
@@ -108,6 +173,8 @@ export class ProductListComponent implements OnInit {
   }
 
   private buildFilters(formValue: Record<string, unknown>, query: string): ProductFilters {
+    const rawMin = formValue['minPrice'] as number;
+    const rawMax = formValue['maxPrice'] as number;
     return {
       query,
       categories: Object.entries(formValue['categories'] as Record<string, boolean>)
@@ -116,8 +183,8 @@ export class ProductListComponent implements OnInit {
       brands: Object.entries(formValue['brands'] as Record<string, boolean>)
         .filter(([, checked]) => checked)
         .map(([key]) => key),
-      minPrice: (formValue['minPrice'] as number | null) ?? null,
-      maxPrice: (formValue['maxPrice'] as number | null) ?? null,
+      minPrice: rawMin > this.priceMin ? rawMin : null,
+      maxPrice: rawMax < this.priceMax ? rawMax : null,
       ram: Object.entries(formValue['ram'] as Record<string, boolean>)
         .filter(([, checked]) => checked)
         .map(([key]) => key),
