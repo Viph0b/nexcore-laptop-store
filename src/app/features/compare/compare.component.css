@@ -1,3 +1,14 @@
+.section-label {
+  opacity: 0;
+  animation: compare-enter 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+:host .page__title {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: compare-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
 .compare__header {
   display: flex;
   align-items: flex-start;
@@ -5,8 +16,16 @@
   margin-bottom: 48px;
 }
 
+.compare__header .btn {
+  opacity: 0;
+  animation: compare-enter 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
 .compare__table-wrap {
   overflow-x: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: compare-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
 }
 
 .compare__table {
@@ -50,6 +69,11 @@
   object-fit: cover;
   border-radius: var(--radius);
   border: 1px solid var(--color-border);
+  transition: transform 0.35s ease;
+}
+
+.compare__product-header:hover img {
+  transform: scale(1.04);
 }
 
 .compare__product-header span {
@@ -72,6 +96,9 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: compare-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
 }
 
 .compare__empty p {
@@ -82,4 +109,11 @@
 .compare__hint {
   font-size: 14px;
   margin-bottom: 24px !important;
+}
+
+@keyframes compare-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

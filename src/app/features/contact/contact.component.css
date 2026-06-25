@@ -1,3 +1,14 @@
+.section-label {
+  opacity: 0;
+  animation: contact-enter 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+:host .page__title {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: contact-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
 .contact__layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -17,12 +28,18 @@
   line-height: 1.7;
   margin-bottom: 40px;
   max-width: 400px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: contact-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
 }
 
 .contact__details {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: contact-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
 }
 
 .contact__details a {
@@ -52,6 +69,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: contact-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
 }
 
 .contact__success {
@@ -61,13 +81,21 @@
   border-radius: var(--radius);
   font-size: 14px;
   color: var(--color-accent);
+  animation: contact-success-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  opacity: 0;
+  animation: contact-enter 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+.form-field:nth-child(1) { animation-delay: 0.15s; }
+.form-field:nth-child(2) { animation-delay: 0.2s; }
+.form-field:nth-child(3) { animation-delay: 0.25s; }
+.form-field:nth-child(4) { animation-delay: 0.3s; }
 
 .form-field label {
   font-size: 13px;
@@ -89,8 +117,32 @@
 
 .form-input:focus {
   border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(92, 92, 255, 0.1);
 }
 
 .form-input::placeholder {
   color: var(--color-muted);
+}
+
+:host .btn {
+  opacity: 0;
+  animation: contact-enter 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+@keyframes contact-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contact-success-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
