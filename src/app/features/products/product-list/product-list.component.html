@@ -15,7 +15,12 @@
       <aside class="products-page__sidebar">
         <div class="filter-panel">
           <div class="filter-panel__header">
-            <h2 class="filter-panel__title">Filters · {{ activeFilterCount }}</h2>
+            <div class="filter-panel__header-left">
+              <span class="filter-panel__title">FILTERS</span>
+              @if (activeFilterCount > 0) {
+                <span class="filter-panel__badge">{{ activeFilterCount }}</span>
+              }
+            </div>
             @if (activeFilterCount > 0) {
               <button type="button" class="filter-panel__reset" (click)="resetFilters()">Reset</button>
             }
@@ -24,8 +29,8 @@
           <div class="filter-section" [class.filter-section--open]="!collapsedSections['category']">
             <button type="button" class="filter-section__toggle" (click)="toggleSection('category')">
               <span class="filter-section__label">Category</span>
-              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg class="filter-section__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M3.5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
             <div class="filter-section__body">
@@ -34,9 +39,9 @@
                   @for (cat of categories; track cat.value) {
                     <label class="filter-checkbox">
                       <input type="checkbox" [formControlName]="cat.value" class="filter-checkbox__input" />
-                      <span class="filter-checkbox__check">
-                        <svg class="filter-checkbox__icon" width="10" height="10" viewBox="0 0 10 10" fill="none">
-                          <path d="M2 5l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <span class="filter-checkbox__box">
+                        <svg class="filter-checkbox__icon" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                          <path d="M1.5 4l2 2 3-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                       </span>
                       <span class="filter-checkbox__text">{{ cat.label }}</span>
@@ -50,8 +55,8 @@
           <div class="filter-section" [class.filter-section--open]="!collapsedSections['brand']">
             <button type="button" class="filter-section__toggle" (click)="toggleSection('brand')">
               <span class="filter-section__label">Brand</span>
-              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg class="filter-section__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M3.5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
             <div class="filter-section__body">
@@ -60,9 +65,9 @@
                   @for (brand of brands; track brand.value) {
                     <label class="filter-checkbox">
                       <input type="checkbox" [formControlName]="brand.value" class="filter-checkbox__input" />
-                      <span class="filter-checkbox__check">
-                        <svg class="filter-checkbox__icon" width="10" height="10" viewBox="0 0 10 10" fill="none">
-                          <path d="M2 5l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <span class="filter-checkbox__box">
+                        <svg class="filter-checkbox__icon" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                          <path d="M1.5 4l2 2 3-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                       </span>
                       <span class="filter-checkbox__text">{{ brand.label }}</span>
@@ -76,25 +81,25 @@
           <div class="filter-section" [class.filter-section--open]="!collapsedSections['price']">
             <button type="button" class="filter-section__toggle" (click)="toggleSection('price')">
               <span class="filter-section__label">Price Range</span>
-              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg class="filter-section__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M3.5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
             <div class="filter-section__body">
               <div class="filter-section__content">
-                <div class="price-slider">
-                  <div class="price-slider__track">
-                    <div class="price-slider__fill" [style.left.%]="minPricePercent" [style.width.%]="maxPricePercent - minPricePercent"></div>
-                    <input type="range" class="price-slider__input price-slider__input--min"
-                           [min]="priceMin" [max]="priceMax" [step]="priceStep"
-                           [value]="minPriceVal" (input)="onMinPriceInput($event)" />
-                    <input type="range" class="price-slider__input price-slider__input--max"
-                           [min]="priceMin" [max]="priceMax" [step]="priceStep"
-                           [value]="maxPriceVal" (input)="onMaxPriceInput($event)" />
+                <div class="price-inputs">
+                  <div class="price-input__wrapper">
+                    <span class="price-input__prefix">$</span>
+                    <input type="number" class="price-input"
+                           [value]="minPriceVal" (input)="onMinPriceInput($event)"
+                           [min]="priceMin" [max]="priceMax" placeholder="0" />
                   </div>
-                  <div class="price-slider__range-labels">
-                    <span>$0</span>
-                    <span>$5,000</span>
+                  <span class="price-inputs__sep">—</span>
+                  <div class="price-input__wrapper">
+                    <span class="price-input__prefix">$</span>
+                    <input type="number" class="price-input"
+                           [value]="maxPriceVal" (input)="onMaxPriceInput($event)"
+                           [min]="priceMin" [max]="priceMax" placeholder="5000" />
                   </div>
                 </div>
               </div>
@@ -104,8 +109,8 @@
           <div class="filter-section" [class.filter-section--open]="!collapsedSections['ram']">
             <button type="button" class="filter-section__toggle" (click)="toggleSection('ram')">
               <span class="filter-section__label">RAM</span>
-              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg class="filter-section__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M3.5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
             <div class="filter-section__body">
@@ -125,8 +130,8 @@
           <div class="filter-section" [class.filter-section--open]="!collapsedSections['storage']">
             <button type="button" class="filter-section__toggle" (click)="toggleSection('storage')">
               <span class="filter-section__label">Storage</span>
-              <svg class="filter-section__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg class="filter-section__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M3.5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
             <div class="filter-section__body">

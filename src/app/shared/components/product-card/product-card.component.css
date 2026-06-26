@@ -11,15 +11,13 @@
   background: #1a1a1a;
   border: 1px solid #222;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  transition: transform 200ms ease, border-color 200ms ease;
 }
 
 .product-card:hover {
   transform: translateY(-4px);
   border-color: #6366f1;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.15);
 }
 
 .product-card__image-wrap {

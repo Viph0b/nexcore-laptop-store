@@ -172,17 +172,11 @@
 
 /* ── Filter Panel ── */
 .filter-panel {
-  background: #1a1a1a;
-  border-radius: 8px;
-  max-height: calc(100vh - var(--nav-height, 64px) - 48px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.filter-panel::-webkit-scrollbar {
-  display: none;
+  background: #161616;
+  border-radius: 12px;
+  border: 1px solid #1f1f1f;
+  overflow: hidden;
+  position: relative;
 }
 
 .filter-panel__header {
@@ -192,31 +186,45 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
-  background: #1a1a1a;
-  border-bottom: 1px solid #1e1e1e;
-  border-radius: 8px 8px 0 0;
+  padding: 11px 16px;
+  background: #161616;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.filter-panel__header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .filter-panel__title {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #ccc;
+  color: #888;
+}
+
+.filter-panel__badge {
+  background: #6366f1;
+  border-radius: 99px;
+  padding: 1px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
 }
 
 .filter-panel__reset {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: #6366f1;
   background: transparent;
   border: none;
-  padding: 4px 10px;
+  padding: 4px 8px;
   border-radius: 4px;
-  transition: background 0.2s ease;
   cursor: pointer;
-  letter-spacing: 0.02em;
+  transition: background 0.2s ease;
 }
 
 .filter-panel__reset:hover {
@@ -225,15 +233,11 @@
 
 /* ── Accordion Sections ── */
 .filter-section {
-  border-bottom: 1px solid #1e1e1e;
+  border-bottom: 1px solid #1a1a1a;
 }
 
-.filter-section:last-of-type {
+.filter-section:last-child {
   border-bottom: none;
-}
-
-.filter-section:last-of-type .filter-section__content {
-  padding-bottom: 12px;
 }
 
 .filter-section__toggle {
@@ -241,16 +245,10 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 14px 16px;
+  padding: 9px 16px;
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #666;
-  transition: color 0.2s ease;
-}
-
-.filter-section__toggle:hover {
-  color: #ccc;
 }
 
 .filter-section__label {
@@ -259,14 +257,20 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #555;
+  transition: color 0.2s ease;
 }
 
-.filter-section__arrow {
-  transition: transform 200ms ease;
+.filter-section__toggle:hover .filter-section__label {
+  color: #aaa;
+}
+
+.filter-section__chevron {
   color: #555;
+  transition: transform 200ms ease;
+  flex-shrink: 0;
 }
 
-.filter-section--open .filter-section__arrow {
+.filter-section--open .filter-section__chevron {
   transform: rotate(90deg);
 }
 
@@ -277,34 +281,34 @@
 }
 
 .filter-section--open .filter-section__body {
-  max-height: 500px;
+  max-height: 300px;
 }
 
 .filter-section__content {
-  margin-top: 8px;
-  padding: 0 16px 16px;
+  padding: 6px 16px 14px;
 }
 
-/* ── Checkbox Rows (Category & Brand) ── */
+/* ── Checkbox Grid (Category & Brand) ── */
 .filter-checkboxes {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2px;
 }
 
 .filter-checkbox {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   padding: 6px 8px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background 0.15s ease;
   user-select: none;
+  min-width: 0;
 }
 
 .filter-checkbox:hover {
-  background: #242424;
+  background: #1e1e1e;
 }
 
 .filter-checkbox__input {
@@ -315,21 +319,20 @@
   pointer-events: none;
 }
 
-.filter-checkbox__check {
-  width: 14px;
-  height: 14px;
+.filter-checkbox__box {
+  width: 12px;
+  height: 12px;
   border-radius: 3px;
-  border: 1px solid #444;
+  border: 1px solid #333;
   background: transparent;
   transition: all 0.15s ease;
   flex-shrink: 0;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.filter-checkbox__input:checked + .filter-checkbox__check {
+.filter-checkbox__input:checked + .filter-checkbox__box {
   background: #6366f1;
   border-color: #6366f1;
 }
@@ -338,18 +341,75 @@
   display: none;
 }
 
-.filter-checkbox__input:checked + .filter-checkbox__check .filter-checkbox__icon {
+.filter-checkbox__input:checked + .filter-checkbox__box .filter-checkbox__icon {
   display: block;
 }
 
 .filter-checkbox__text {
-  font-size: 14px;
-  font-weight: 400;
-  color: #bbb;
+  font-size: 13px;
+  color: #888;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.15s ease;
 }
 
 .filter-checkbox:hover .filter-checkbox__text {
-  color: #ddd;
+  color: #ccc;
+}
+
+/* ── Price Inputs ── */
+.price-inputs {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.price-inputs__sep {
+  color: #555;
+  font-size: 14px;
+  text-align: center;
+}
+
+.price-input__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.price-input__prefix {
+  position: absolute;
+  left: 7px;
+  font-size: 12px;
+  color: #555;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.price-input {
+  width: 100%;
+  height: 26px;
+  padding: 0 8px 0 18px;
+  background: #1e1e1e;
+  border: 1px solid #272727;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #bbb;
+  outline: none;
+  transition: border-color 0.15s ease;
+  -moz-appearance: textfield;
+}
+
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.price-input:focus {
+  border-color: #6366f1;
 }
 
 /* ── Chip Pills (RAM & Storage) ── */
@@ -374,21 +434,21 @@
 .filter-chip__text {
   display: inline-flex;
   align-items: center;
-  height: 30px;
-  padding: 0 12px;
+  height: 26px;
+  padding: 0 10px;
   font-size: 12px;
   font-weight: 500;
-  color: #999;
-  background: #222;
-  border: 1px solid #333;
-  border-radius: 6px;
+  color: #777;
+  background: #1e1e1e;
+  border: 1px solid #272727;
+  border-radius: 5px;
   transition: all 0.15s ease;
   line-height: 1;
 }
 
 .filter-chip:hover .filter-chip__text {
-  color: #bbb;
-  border-color: #555;
+  border-color: #444;
+  color: #999;
 }
 
 .filter-chip--active .filter-chip__text {
@@ -400,75 +460,4 @@
 .filter-chip--active:hover .filter-chip__text {
   background: #5558e6;
   border-color: #5558e6;
-}
-
-/* ── Dual-Handle Price Slider ── */
-.price-slider {
-  padding-bottom: 4px;
-}
-
-.price-slider__track {
-  position: relative;
-  height: 3px;
-  background: #2a2a2a;
-  border-radius: 2px;
-}
-
-.price-slider__fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: #6366f1;
-  border-radius: 2px;
-}
-
-.price-slider__input {
-  position: absolute;
-  top: -6px;
-  left: 0;
-  width: 100%;
-  height: 14px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  pointer-events: none;
-  margin: 0;
-  z-index: 2;
-}
-
-.price-slider__input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid #6366f1;
-  cursor: pointer;
-  pointer-events: auto;
-}
-
-.price-slider__input::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid #6366f1;
-  cursor: pointer;
-  pointer-events: auto;
-}
-
-.price-slider__input::-webkit-slider-runnable-track,
-.price-slider__input::-moz-range-track {
-  height: 3px;
-  background: transparent;
-}
-
-.price-slider__range-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: #555;
-  margin-top: 8px;
 }
