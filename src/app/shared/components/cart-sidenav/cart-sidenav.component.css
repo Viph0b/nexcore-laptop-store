@@ -60,6 +60,20 @@
   border-radius: 999px;
   padding: 0 6px;
 }
+.cart-head__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cart-clear {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+.cart-clear:hover { color: #ff6b6b; background: rgba(255, 107, 107, 0.1); }
 .cart-close {
   width: 32px; height: 32px;
   display: inline-flex; align-items: center; justify-content: center;

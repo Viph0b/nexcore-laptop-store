@@ -25,6 +25,10 @@ export class CartSidenavComponent {
     this.cart.removeFromCart(productId);
   }
 
+  clearCart(): void {
+    this.cart.clearCart();
+  }
+
   updateQuantity(productId: string, quantity: number): void {
     this.cart.updateQuantity(productId, Number(quantity));
   }

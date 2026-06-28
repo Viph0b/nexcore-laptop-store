@@ -1,8 +1,10 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 import { Product } from '../../../models/product.model';
+import { CartService } from '../../../services/cart.service';
 import { CompareService } from '../../../services/compare.service';
+import { SidenavService } from '../../../services/sidenav.service';
 
 @Component({
   selector: 'app-product-card',
@@ -15,7 +17,9 @@ export class ProductCardComponent {
   readonly product = input.required<Product>();
   added = false;
 
-  constructor(private readonly compareService: CompareService) {}
+  private readonly cartService = inject(CartService);
+  private readonly compareService = inject(CompareService);
+  private readonly sidenavService = inject(SidenavService);
 
   get compared(): boolean {
     return this.compareService.isInCompare(this.product().id);
@@ -26,7 +30,8 @@ export class ProductCardComponent {
   }
 
   addToCart(): void {
+    this.cartService.addToCart(this.product());
     this.added = true;
-    setTimeout(() => this.added = false, 1500);
+    setTimeout(() => (this.added = false), 1000);
   }
 }
