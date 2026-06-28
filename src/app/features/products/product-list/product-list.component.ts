@@ -3,6 +3,7 @@ import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductCardComponent } from '../../../shared/components/product-card/product-card.component';
+import { ScrollToTopComponent } from '../../../shared/components/scroll-to-top/scroll-to-top.component';
 import { ProductService } from '../../../services/product.service';
 import { Product, ProductFilters, SortOption } from '../../../models/product.model';
 import { combineLatest, map, Observable, startWith, switchMap } from 'rxjs';
@@ -10,7 +11,7 @@ import { combineLatest, map, Observable, startWith, switchMap } from 'rxjs';
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [AsyncPipe, ReactiveFormsModule, ProductCardComponent],
+  imports: [AsyncPipe, ReactiveFormsModule, ProductCardComponent, ScrollToTopComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })

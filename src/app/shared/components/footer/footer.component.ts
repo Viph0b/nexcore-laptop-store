@@ -15,10 +15,10 @@ export class FooterComponent {
   readonly emailControl = new FormControl('');
 
   readonly productLinks = [
-    { label: 'Pro 14', path: '/products/nexcore-pro-14' },
-    { label: 'Ultra 16', path: '/products/nexcore-ultra-16' },
-    { label: 'Slim 13', path: '/products/nexcore-slim-13' },
-    { label: 'Studio 15', path: '/products/nexcore-studio-15' },
+    { label: 'Pro 14', path: '/products' },
+    { label: 'Ultra 16', path: '/products' },
+    { label: 'Slim 13', path: '/products' },
+    { label: 'Studio 15', path: '/products' },
   ];
 
   readonly companyLinks = [
