@@ -6,23 +6,7 @@
         <img [src]="product().images[0]" [alt]="product().name" class="product-card__image" loading="lazy" />
       </div>
     </a>
-    <div class="card-tray">
-      <button
-        type="button"
-        class="btn-cart"
-        [class.is-added]="added"
-        (click)="addToCart()"
-      >
-        {{ added ? 'Added ✓' : 'Add to cart' }}
-      </button>
-    </div>
   </div>
-  <a [routerLink]="['/products', product().id]" class="btn-details">
-    View Details
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m9 18 6-6-6-6" />
-    </svg>
-  </a>
   <div class="product-card__body">
     <h3 class="product-card__name">
       <a [routerLink]="['/products', product().id]">{{ product().name }}</a>
@@ -30,19 +14,29 @@
     <p class="product-card__specs">{{ product().specs.cpu }} · {{ product().specs.ram }} · {{ product().specs.display }}</p>
     <div class="product-card__footer">
       <span class="product-card__price">{{ product().price | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
-      <button
-        type="button"
-        class="product-card__btn-compare"
-        [class.is-active]="compared"
-        (click)="toggleCompare()"
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M7 20h10" />
-          <path d="M6 16l10-12" />
-          <path d="M18 16l-6-3" />
-        </svg>
-        {{ compared ? 'Compared' : 'Compare' }}
-      </button>
+      <div class="product-card__actions">
+        <button
+          type="button"
+          class="product-card__btn-cart"
+          [class.is-added]="added"
+          (click)="addToCart()"
+        >
+          {{ added ? 'Added ✓' : 'Add to cart' }}
+        </button>
+        <button
+          type="button"
+          class="product-card__btn-compare"
+          [class.is-active]="compared"
+          (click)="toggleCompare()"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 20h10" />
+            <path d="M6 16l10-12" />
+            <path d="M18 16l-6-3" />
+          </svg>
+          {{ compared ? 'Compared' : 'Compare' }}
+        </button>
+      </div>
     </div>
   </div>
 </article>
