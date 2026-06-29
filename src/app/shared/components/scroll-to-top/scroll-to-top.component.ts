@@ -21,19 +21,19 @@ import { Component, HostListener, signal } from '@angular/core';
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: #2d5be3;
+      background: var(--color-accent);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(45, 91, 227, 0.35);
+      box-shadow: 0 4px 16px var(--color-accent-glow);
       transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
       animation: scroll-top-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .scroll-to-top:hover {
-      background: #3d6bf5;
+      background: #7b7bff;
       transform: translateY(-2px);
     }
     @keyframes scroll-top-in {
