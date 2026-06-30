@@ -74,6 +74,12 @@
   animation: contact-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
 }
 
+@media (max-width: 560px) {
+  .contact__form {
+    padding: 20px;
+  }
+}
+
 .contact__success {
   padding: 12px 16px;
   background: rgba(92, 92, 255, 0.1);

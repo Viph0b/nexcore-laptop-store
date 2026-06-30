@@ -84,8 +84,26 @@ textarea {
   padding: 0 24px;
 }
 
+@media (max-width: 560px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
 .section {
   padding: 96px 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 48px 0;
+  }
 }
 
 .section-label {
@@ -104,6 +122,18 @@ textarea {
 
 .page {
   padding: 64px 0 96px;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 40px 0 64px;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 24px 0 48px;
+  }
 }
 
 .page__title {
