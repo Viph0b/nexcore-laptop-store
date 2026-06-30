@@ -257,35 +257,4 @@
   .compare__empty {
     padding: 40px 16px;
   }
-
-  .browse-btn {
-    font-size: 13px;
-    padding: 0.8em 1.5em;
-  }
-}
-
-@media (max-width: 400px) {
-  .compare__table th,
-  .compare__table td {
-    padding: 6px 4px;
-    font-size: 10px;
-  }
-
-  .compare__table th:first-child,
-  .compare__table td:first-child {
-    width: 60px;
-  }
-
-  .compare__table th:not(:first-child),
-  .compare__table td:not(:first-child) {
-    width: calc((100% - 60px) / var(--product-count));
-  }
-
-  .compare__product-header img {
-    max-width: 60px;
-  }
-
-  .compare__product-header span {
-    font-size: 10px;
-  }
 }

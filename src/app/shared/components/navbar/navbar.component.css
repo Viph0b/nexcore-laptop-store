@@ -308,7 +308,7 @@
 
 @media (max-width: 768px) {
   .navbar__inner {
-    gap: 12px;
+    gap: 8px;
   }
 
   .navbar__menu-btn {
@@ -428,4 +428,3 @@
 .get-started .fil0 {
   fill: #fffdef;
 }
-

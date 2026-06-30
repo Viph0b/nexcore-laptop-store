@@ -43,9 +43,18 @@ export class LaptopCanvasComponent implements OnDestroy {
   private nextKeyTime = 0;
   private readonly timer = new THREE.Timer();
   private animationId = 0;
+  private resizeObserver: ResizeObserver | null = null;
 
   constructor() {
     afterNextRender(() => this.init());
+  }
+
+  private getSize(): { width: number; height: number } {
+    const host = this.el.nativeElement as HTMLElement;
+    return {
+      width: host.clientWidth || 480,
+      height: host.clientHeight || 420,
+    };
   }
 
   private init(): void {
@@ -53,10 +62,12 @@ export class LaptopCanvasComponent implements OnDestroy {
     if (!canvas) return;
     const canvasEl = canvas.nativeElement;
 
+    const size = this.getSize();
+
     this.scene = new THREE.Scene();
     this.scene.background = null;
 
-    this.camera = new THREE.PerspectiveCamera(40, 480 / 420, 0.1, 100);
+    this.camera = new THREE.PerspectiveCamera(40, size.width / size.height, 0.1, 100);
     this.camera.position.set(2.5, 2.8, 6);
 
     this.renderer = new THREE.WebGLRenderer({
@@ -64,13 +75,21 @@ export class LaptopCanvasComponent implements OnDestroy {
       alpha: true,
       antialias: true,
     });
-    this.renderer.setSize(480, 420);
+    this.renderer.setSize(size.width, size.height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    this.resizeObserver = new ResizeObserver(() => {
+      const s = this.getSize();
+      this.camera.aspect = s.width / s.height;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(s.width, s.height);
+    });
+    this.resizeObserver.observe(this.el.nativeElement);
 
     this.controls = new OrbitControls(this.camera, canvasEl);
     this.controls.enableDamping = true;
@@ -589,5 +608,6 @@ export class LaptopCanvasComponent implements OnDestroy {
     cancelAnimationFrame(this.animationId);
     this.controls?.dispose();
     this.renderer?.dispose();
+    this.resizeObserver?.disconnect();
   }
 }
